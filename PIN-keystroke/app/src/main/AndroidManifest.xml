@@ -18,6 +18,9 @@
         </activity>
         <activity android:label="@string/app_name" android:name=".TrainingMain"/>
         <activity android:label="@string/app_name" android:name=".TrainingPIN"/>
+        <activity android:label="@string/app_name" android:name=".Thanks"/>
+        <activity android:label="@string/app_name" android:name=".PinChoice"/>
+
     </application>
 
 </manifest>
