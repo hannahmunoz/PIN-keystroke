@@ -28,13 +28,15 @@ import org.json.JSONObject;
  */
 
 class TrainingPIN extends AppCompatActivity {
-    int count = 1;
+    int count = 20;
     String correct;
     char current;
     long start;
-    long down;
+    long down, up, totaltime;
     boolean isfull = false;
     boolean check = false;
+    JSONArray Entry = new JSONArray();
+    JSONArray TrainingSet = new JSONArray();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +66,9 @@ class TrainingPIN extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!digit.getText().toString().isEmpty()) {
+             /*   if (!digit.getText().toString().isEmpty()) {
                     Log.d("KeyDown: " + digit.getText().toString().charAt(digit.getText().length() - 1), String.valueOf(start - down));
-                }
+                }*/
             }
 
             @Override
@@ -81,7 +83,7 @@ class TrainingPIN extends AppCompatActivity {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (!digit.getText().toString().isEmpty()) {
-                    current = digit.getText().toString().charAt(digit.getText().length() - 1);
+                    current = (char) keyCode;
                 }
 
                 // on enter
@@ -95,13 +97,26 @@ class TrainingPIN extends AppCompatActivity {
                             Intent intent = new Intent(v.getContext(), Thanks.class);
                             startActivity(intent);
                         }
-                        Log.d ("TotalTime: ", String.valueOf(start - System.nanoTime()));
+                        JSONObject overAllMetadata = new JSONObject();
+                        try {
+
+                            overAllMetadata.put("Total Time", (System.nanoTime() - start));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        Entry.put(overAllMetadata);
+                        TrainingSet.put(Entry);
+                        Entry = null;
+                        Entry = new JSONArray();
+                        //Log.d ("TotalTime: ", String.valueOf(start - System.nanoTime()));
                     }
-                    else {
-                        digit.getText().clear();
-                        isfull = false;
-                        check = false;
-                    }
+
+                    digit.getText().clear();
+                    Entry = null;
+                    Entry = new JSONArray();
+                    isfull = false;
+                    check = false;
+
 
                 }
                 return false;
@@ -110,12 +125,27 @@ class TrainingPIN extends AppCompatActivity {
 
     }
 
+    public JSONObject createMetadata(){
+        JSONObject temp = new JSONObject();
+        try {
+            temp.put("Digit", current-7);
+            temp.put("Key Down", down-start);
+            temp.put("Key Up", up-down);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return temp;
+    }
+
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (!check) {
-            Log.d("KeyUp: " + current, String.valueOf(down - System.nanoTime()));
-
+            //Log.d("KeyUp: " + current, String.valueOf(down - System.nanoTime()));
+            up = System.nanoTime();
+            if (keyCode != 66) {
+                Entry.put(createMetadata());
+            }
             if (isfull){
                 check = true;
             }
