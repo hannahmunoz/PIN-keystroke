@@ -57,4 +57,12 @@ tools:context="com.example.hannah.pin_keystroke.TrainingMain"
     tools:layout_editor_absoluteY="19dp"
     tools:layout_editor_absoluteX="0dp" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        tools:layout_editor_absoluteX="310dp"
+        tools:layout_editor_absoluteY="37dp" />
+
 </android.support.constraint.ConstraintLayout>

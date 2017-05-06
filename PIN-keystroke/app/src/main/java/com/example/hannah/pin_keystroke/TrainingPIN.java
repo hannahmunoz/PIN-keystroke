@@ -33,16 +33,22 @@ class TrainingPIN extends AppCompatActivity {
     char current;
     long start;
     long down;
+    boolean isfull = false;
+    boolean check = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         correct = getIntent().getStringExtra("correct");
+
         //create the layout
         setContentView(R.layout.training);
+        setTitle(correct);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         final EditText digit = (EditText) findViewById(R.id.digit);
 
+        final EditText counter = (EditText) findViewById(R.id.count);
+        counter.setText(String.valueOf(count));
 
         //start in first digit
         digit.requestFocus();
@@ -53,20 +59,21 @@ class TrainingPIN extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 down = System.nanoTime();
-                if (!s.toString().isEmpty()) {
-                    Log.d("KeyDown: " + current, String.valueOf(start - down));
-                }
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-
+                if (!digit.getText().toString().isEmpty()) {
+                    Log.d("KeyDown: " + digit.getText().toString().charAt(digit.getText().length() - 1), String.valueOf(start - down));
+                }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (digit.getText().length() >= 4){
+                    isfull = true;
+                }
             }
         });
 
@@ -82,14 +89,20 @@ class TrainingPIN extends AppCompatActivity {
                     // clear
                     if (digit.getText().toString().equalsIgnoreCase(correct)) {
                         count--;
+                        counter.setText(String.valueOf(count));
+
                         if (count == 0) {
                             Intent intent = new Intent(v.getContext(), Thanks.class);
                             startActivity(intent);
                         }
                         Log.d ("TotalTime: ", String.valueOf(start - System.nanoTime()));
-
                     }
-                    digit.getText().clear();
+                    else {
+                        digit.getText().clear();
+                        isfull = false;
+                        check = false;
+                    }
+
                 }
                 return false;
             }
@@ -100,7 +113,13 @@ class TrainingPIN extends AppCompatActivity {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        Log.d ("KeyUp: "+ current, String.valueOf(down - System.nanoTime()));
+        if (!check) {
+            Log.d("KeyUp: " + current, String.valueOf(down - System.nanoTime()));
+
+            if (isfull){
+                check = true;
+            }
+        }
 
         return true;
     }
