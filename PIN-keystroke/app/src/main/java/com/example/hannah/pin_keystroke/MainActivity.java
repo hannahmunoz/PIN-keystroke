@@ -44,15 +44,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == 0) {
+            Intent intent = null;
             switch (v.getId()) {
                 case (R.id.training):
                     //go to training main
-                    Intent intent = new Intent(MainActivity.this, TrainingMain.class);
-                    startActivity(intent);
+                    intent = new Intent(MainActivity.this, UserRegistration.class);
                     break;
                 case (R.id.testing):
+                    intent = new Intent(MainActivity.this, Testing.class);
                     break;
             }
+            startActivity(intent);
+
         }
         else{
             getPermissions();

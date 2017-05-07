@@ -21,6 +21,8 @@
         <activity android:label="@string/app_name" android:name=".Thanks"/>
         <activity android:label="@string/app_name" android:name=".PinChoice"/>
         <activity android:label="@string/app_name" android:name=".UserRegistration"/>
+        <activity android:label="@string/app_name" android:name=".Testing"/>
+
 
 
     </application>
