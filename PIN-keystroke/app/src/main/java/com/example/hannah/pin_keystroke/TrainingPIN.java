@@ -8,6 +8,7 @@ import android.hardware.SensorManager;
 import android.hardware.TriggerEvent;
 import android.hardware.TriggerEventListener;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -23,13 +24,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 /**
  * Created by hannah on 4/28/17.
  */
 
-class TrainingPIN extends AppCompatActivity {
-    int count = 20;
-    String correct;
+public class TrainingPIN extends AppCompatActivity {
+    int count = 5;
+    String correct, username;
     char current;
     long start;
     long down, up, totaltime;
@@ -37,11 +43,14 @@ class TrainingPIN extends AppCompatActivity {
     boolean check = false;
     JSONArray Entry = new JSONArray();
     JSONArray TrainingSet = new JSONArray();
+    JSONObject finalset = new JSONObject();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         correct = getIntent().getStringExtra("correct");
+        username = getIntent().getStringExtra("userID");
 
         //create the layout
         setContentView(R.layout.training);
@@ -93,10 +102,7 @@ class TrainingPIN extends AppCompatActivity {
                         count--;
                         counter.setText(String.valueOf(count));
 
-                        if (count == 0) {
-                            Intent intent = new Intent(v.getContext(), Thanks.class);
-                            startActivity(intent);
-                        }
+
                         JSONObject overAllMetadata = new JSONObject();
                         try {
 
@@ -106,6 +112,24 @@ class TrainingPIN extends AppCompatActivity {
                         }
                         Entry.put(overAllMetadata);
                         TrainingSet.put(Entry);
+                        if (count == 0) {
+                            try {
+                                finalset.putOpt(username,TrainingSet);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //write to file
+                            try {
+                                filewriter(finalset.toString(4));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Intent intent = new Intent(v.getContext(), Thanks.class);
+                            startActivity(intent);
+
+                        }
                         Entry = null;
                         Entry = new JSONArray();
                         //Log.d ("TotalTime: ", String.valueOf(start - System.nanoTime()));
@@ -124,6 +148,17 @@ class TrainingPIN extends AppCompatActivity {
         });
 
     }
+
+    public void filewriter(String data) throws IOException {
+        File out = new File (Environment.getExternalStorageDirectory(), correct+"-output.txt");
+        if (!out.exists()){
+            out.createNewFile();
+        }
+        FileOutputStream fout = new FileOutputStream(out, true);
+        fout.write(data.getBytes());
+        fout.close();
+
+        }
 
     public JSONObject createMetadata(){
         JSONObject temp = new JSONObject();

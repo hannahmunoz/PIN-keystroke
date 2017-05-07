@@ -32,7 +32,7 @@ public class TrainingMain extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case (R.id.newUser):
                 //go to training main
-                Intent intent = new Intent(v.getContext(), PinChoice.class);
+                Intent intent = new Intent(v.getContext(), UserRegistration.class);
                 startActivity(intent);
                 break;
             case (R.id.returningUser):

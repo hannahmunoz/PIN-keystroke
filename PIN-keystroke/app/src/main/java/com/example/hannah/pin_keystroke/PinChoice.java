@@ -11,11 +11,13 @@ import android.widget.Button;
  */
 
 public class PinChoice extends AppCompatActivity implements View.OnClickListener{
-
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        username = getIntent().getStringExtra("userID");
+
 
         //create the layout
         setContentView(R.layout.pin_choice);
@@ -64,6 +66,7 @@ public class PinChoice extends AppCompatActivity implements View.OnClickListener
                 intent.putExtra("correct", "0738");
                 break;
         }
+        intent.putExtra("userID", username);
         startActivity(intent);
 
     }
