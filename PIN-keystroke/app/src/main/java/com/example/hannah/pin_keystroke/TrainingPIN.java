@@ -41,8 +41,8 @@ public class TrainingPIN extends AppCompatActivity {
     long down, up, totaltime;
     boolean isfull = false;
     boolean check = false;
-    JSONArray Entry = new JSONArray();
-    JSONArray TrainingSet = new JSONArray();
+    JSONArray AllAttempts = new JSONArray();
+    JSONObject TrainingSingle = new JSONObject();
     JSONObject finalset = new JSONObject();
 
 
@@ -60,6 +60,12 @@ public class TrainingPIN extends AppCompatActivity {
 
         final EditText counter = (EditText) findViewById(R.id.count);
         counter.setText(String.valueOf(count));
+
+        try {
+            finalset.put(username, new JSONArray());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         //start in first digit
         digit.requestFocus();
@@ -103,21 +109,26 @@ public class TrainingPIN extends AppCompatActivity {
                         counter.setText(String.valueOf(count));
 
 
-                        JSONObject overAllMetadata = new JSONObject();
+                        JSONArray overAllMetadata = new JSONArray();
                         try {
-
-                            overAllMetadata.put("Total Time", (System.nanoTime() - start));
+                            JSONObject totalTime = new JSONObject();
+                            totalTime.put("Total Time", (System.nanoTime() - start));
+                            overAllMetadata.put(totalTime);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        Entry.put(overAllMetadata);
-                        TrainingSet.put(Entry);
+                        //AllAttempts.put(overAllMetadata);
+                        try {
+                            TrainingSingle.put("Keys", AllAttempts);
+                            TrainingSingle.put("Metadata", overAllMetadata);
+                            finalset.getJSONArray(username).put(TrainingSingle);
+                            TrainingSingle = null;
+                            TrainingSingle = new JSONObject();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         if (count == 0) {
-                            try {
-                                finalset.putOpt(username,TrainingSet);
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
                             //write to file
                             try {
                                 filewriter(finalset.toString(4));
@@ -130,17 +141,14 @@ public class TrainingPIN extends AppCompatActivity {
                             startActivity(intent);
 
                         }
-                        Entry = null;
-                        Entry = new JSONArray();
                         //Log.d ("TotalTime: ", String.valueOf(start - System.nanoTime()));
                     }
 
                     digit.getText().clear();
-                    Entry = null;
-                    Entry = new JSONArray();
+                    AllAttempts = null;
+                    AllAttempts = new JSONArray();
                     isfull = false;
                     check = false;
-
 
                 }
                 return false;
@@ -160,12 +168,12 @@ public class TrainingPIN extends AppCompatActivity {
 
         }
 
-    public JSONObject createMetadata(){
+    public JSONObject createKey(){
         JSONObject temp = new JSONObject();
         try {
             temp.put("Digit", current-7);
-            temp.put("Key Down", down-start);
-            temp.put("Key Up", up-down);
+            temp.put("Fight", down-start);
+            temp.put("Dwell", up-down);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -179,7 +187,7 @@ public class TrainingPIN extends AppCompatActivity {
             //Log.d("KeyUp: " + current, String.valueOf(down - System.nanoTime()));
             up = System.nanoTime();
             if (keyCode != 66) {
-                Entry.put(createMetadata());
+                AllAttempts.put(createKey());
             }
             if (isfull){
                 check = true;
