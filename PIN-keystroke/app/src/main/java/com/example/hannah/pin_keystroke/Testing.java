@@ -16,6 +16,7 @@ public class Testing extends AppCompatActivity {
 
 
     private TensorFlowInferenceInterface inferenceInterface;
+    private  static final String MODEL_FILE = "test.pb";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,9 @@ public class Testing extends AppCompatActivity {
         //create the layout
         setContentView(R.layout.testing);
 
-        //inferenceInterface = new TensorFlowInferenceInterface();
+        inferenceInterface = new TensorFlowInferenceInterface(getAssets(), MODEL_FILE);
+//        inferenceInterface.
+//        inferenceInterface.run();
 
     }
 

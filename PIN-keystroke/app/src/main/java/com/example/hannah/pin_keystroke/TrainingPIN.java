@@ -186,8 +186,11 @@ public class TrainingPIN extends AppCompatActivity {
         if (!check) {
             //Log.d("KeyUp: " + current, String.valueOf(down - System.nanoTime()));
             up = System.nanoTime();
-            if (keyCode != 66) {
+            if (keyCode != 66 && keyCode != 67) {
                 AllAttempts.put(createKey());
+            }
+            if (keyCode == 67){
+                AllAttempts.remove(AllAttempts.length()-1);
             }
             if (isfull){
                 check = true;
