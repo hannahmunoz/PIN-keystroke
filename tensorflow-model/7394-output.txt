@@ -1,7 +1,7 @@
 {
-    "hannah": {
+    "hannah": [
         {
-            "Keys": {
+            "Keys": [
                 {
                     "Digit": 7,
                     "Fight": 2335735806,
@@ -22,15 +22,15 @@
                     "Fight": 3181784484,
                     "Dwell": 7249375
                 }
-            },
-            "Metadata": {
+            ],
+            "Metadata": [
                 {
                     "Total Time": 3648384113
                 }
-            }
+            ]
         },
         {
-            "Keys": {
+            "Keys": [
                 {
                     "Digit": 7,
                     "Fight": 5180899943,
@@ -51,15 +51,15 @@
                     "Fight": 5656273116,
                     "Dwell": 16695262
                 }
-            },
-            "Metadata": {
+            ],
+            "Metadata": [
                 {
                     "Total Time": 5810413496
                 }
-            }
+            ]
         },
         {
-            "Keys": {
+            "Keys": [
                 {
                     "Digit": 7,
                     "Fight": 7061145235,
@@ -80,15 +80,15 @@
                     "Fight": 7500083716,
                     "Dwell": 16005158
                 }
-            },
-            "Metadata": {
+            ],
+            "Metadata": [
                 {
                     "Total Time": 7740718792
                 }
-            }
+            ]
         },
         {
-            "Keys": {
+            "Keys": [
                 {
                     "Digit": 7,
                     "Fight": 8827760202,
@@ -109,15 +109,15 @@
                     "Fight": 9266985090,
                     "Dwell": 8869324
                 }
-            },
-            "Metadata": {
+            ],
+            "Metadata": [
                 {
                     "Total Time": 10109808559
                 }
-            }
+            ]
         },
         {
-            "Keys": {
+            "Keys": [
                 {
                     "Digit": 7,
                     "Fight": 11192630178,
@@ -138,12 +138,12 @@
                     "Fight": 11611737303,
                     "Dwell": 14649480
                 }
-            },
-            "Metadata": {
+            ],
+            "Metadata": [
                 {
                     "Total Time": 11760057005
                 }
-            }
+            ]
         }
-    }
+    ]
 }
