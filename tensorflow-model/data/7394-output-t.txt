@@ -1,31 +1,31 @@
 {
-    "hannah": [
+    "taylor": [
         {
             "Keys": [
                 {
                     "Digit": 7,
-                    "Fight": 2335735806,
-                    "Dwell": 24908440
+                    "Fight": 2122654899,
+                    "Dwell": 18091251
                 },
                 {
                     "Digit": 3,
-                    "Fight": 2476011393,
-                    "Dwell": 7975573
+                    "Fight": 2753781212,
+                    "Dwell": 10349896
                 },
                 {
                     "Digit": 9,
-                    "Fight": 2752102045,
-                    "Dwell": 10305678
+                    "Fight": 3202909329,
+                    "Dwell": 8906199
                 },
                 {
                     "Digit": 4,
-                    "Fight": 3181784484,
-                    "Dwell": 7249375
+                    "Fight": 3455560865,
+                    "Dwell": 7559584
                 }
             ],
             "Metadata": [
                 {
-                    "Total Time": 3648384113
+                    "Total Time": 3972922166
                 }
             ]
         },
@@ -33,28 +33,28 @@
             "Keys": [
                 {
                     "Digit": 7,
-                    "Fight": 5180899943,
-                    "Dwell": 15956616
+                    "Fight": 5688773171,
+                    "Dwell": 7007917
                 },
                 {
                     "Digit": 3,
-                    "Fight": 5333830167,
-                    "Dwell": 8224324
+                    "Fight": 5948653665,
+                    "Dwell": 12986929
                 },
                 {
                     "Digit": 9,
-                    "Fight": 5530919926,
-                    "Dwell": 20186304
+                    "Fight": 6320296619,
+                    "Dwell": 11226043
                 },
                 {
                     "Digit": 4,
-                    "Fight": 5656273116,
-                    "Dwell": 16695262
+                    "Fight": 6562761174,
+                    "Dwell": 11690470
                 }
             ],
             "Metadata": [
                 {
-                    "Total Time": 5810413496
+                    "Total Time": 6843373546
                 }
             ]
         },
@@ -62,28 +62,28 @@
             "Keys": [
                 {
                     "Digit": 7,
-                    "Fight": 7061145235,
-                    "Dwell": 7797344
+                    "Fight": 8111654454,
+                    "Dwell": 6533177
                 },
                 {
                     "Digit": 3,
-                    "Fight": 7183556809,
-                    "Dwell": 16724377
+                    "Fight": 8408295212,
+                    "Dwell": 13473752
                 },
                 {
                     "Digit": 9,
-                    "Fight": 7379243548,
-                    "Dwell": 21169793
+                    "Fight": 8741174048,
+                    "Dwell": 7630365
                 },
                 {
                     "Digit": 4,
-                    "Fight": 7500083716,
-                    "Dwell": 16005158
+                    "Fight": 8966680216,
+                    "Dwell": 7388594
                 }
             ],
             "Metadata": [
                 {
-                    "Total Time": 7740718792
+                    "Total Time": 9258455141
                 }
             ]
         },
@@ -91,28 +91,28 @@
             "Keys": [
                 {
                     "Digit": 7,
-                    "Fight": 8827760202,
-                    "Dwell": 12485002
+                    "Fight": 10534919435,
+                    "Dwell": 19284585
                 },
                 {
                     "Digit": 3,
-                    "Fight": 8957743340,
-                    "Dwell": 19065731
+                    "Fight": 10804195399,
+                    "Dwell": 25258440
                 },
                 {
                     "Digit": 9,
-                    "Fight": 9132513358,
-                    "Dwell": 11136980
+                    "Fight": 11098865324,
+                    "Dwell": 30760055
                 },
                 {
                     "Digit": 4,
-                    "Fight": 9266985090,
-                    "Dwell": 8869324
+                    "Fight": 11283191592,
+                    "Dwell": 17354533
                 }
             ],
             "Metadata": [
                 {
-                    "Total Time": 10109808559
+                    "Total Time": 11581066987
                 }
             ]
         },
@@ -120,28 +120,28 @@
             "Keys": [
                 {
                     "Digit": 7,
-                    "Fight": 11192630178,
-                    "Dwell": 14136928
+                    "Fight": 12779916377,
+                    "Dwell": 15164168
                 },
                 {
                     "Digit": 3,
-                    "Fight": 11314549929,
-                    "Dwell": 10091408
+                    "Fight": 13025842287,
+                    "Dwell": 7979480
                 },
                 {
                     "Digit": 9,
-                    "Fight": 11501644531,
-                    "Dwell": 9177241
+                    "Fight": 13311440440,
+                    "Dwell": 7448178
                 },
                 {
                     "Digit": 4,
-                    "Fight": 11611737303,
-                    "Dwell": 14649480
+                    "Fight": 13540502494,
+                    "Dwell": 11101043
                 }
             ],
             "Metadata": [
                 {
-                    "Total Time": 11760057005
+                    "Total Time": 13799704187
                 }
             ]
         }
